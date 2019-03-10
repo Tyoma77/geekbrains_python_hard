@@ -1,0 +1,16 @@
+[
+    {
+        "item": "apple",
+        "quantity": "4",
+        "price": "100",
+        "buyer": "John",
+        "date": "01/03/2019"
+    },
+    {
+        "item": "car",
+        "quantity": "1",
+        "price": "5",
+        "buyer": "Jack",
+        "date": "08/03/2019"
+    }
+]
