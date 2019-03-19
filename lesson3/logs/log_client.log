@@ -1,0 +1,1 @@
+2019-03-19 21:30:51,160 - INFO     - client   - Sending message {"action": "presence", "time": 1553020251.1563191, "user": {"username": "Artem", "status": "I'm home"}} 

@@ -9,12 +9,14 @@ from socket import *
 import time
 import argparse
 import json
+import logs.server_log_config
+import logging
 
 
 def cmd_args():  # обработка сообщений командной строки
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", dest="port", type=int, default=7777)
-    parser.add_argument("-a", dest="addr", type=str, default='0.0.0.0')
+    parser.add_argument("-a", dest="addr", type=str, default='')
 
     return parser.parse_args()
 
@@ -25,7 +27,7 @@ def get_msg(client):  # принимает сообщение клиента;
     try:
         json_msg = json.loads(data.decode('utf-8'))
     except json.JSONDecodeError:
-        print("Сообщение от клиента не распознано", data)
+        logger.error("Сообщение от клиента не распознано", data)
 
     return json_msg
 
@@ -52,11 +54,17 @@ def send_msg(s: socket):  # отправляет ответ клиенту;
 def main():
     args = cmd_args()
     s = socket(AF_INET, SOCK_STREAM)
-    s.bind(('', args.port))
+    try:
+        s.bind(('', args.port))
+    except OSError as e:
+        logger.error(e)
+        s.bind(('', 8888))
     s.listen(5)
     while True:
         send_msg(s)
 
 
 if __name__ == '__main__':
+    logger = logging.getLogger('server')
+    logger.debug('Server started')
     main()

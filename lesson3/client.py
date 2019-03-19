@@ -15,6 +15,8 @@ from socket import *
 import time
 import argparse
 import json
+import logs.client_log_config
+import logging
 
 
 def cmd_args():  # обработка сообщений командной строки
@@ -37,7 +39,7 @@ def presence_msg(username, status):  # сформировать presence-соо�
 
 
 def send_message(msg, s):  # отправить сообщение серверу;
-    print("Sending message %s" % msg)
+    logger.info("Sending message %s" % msg)
     s.send(msg.encode('utf-8'))
 
 
@@ -52,7 +54,7 @@ def parse_message(data):  # разобрать сообщение сервера
         if server_msg['response'] == 100:
             print("Сообщение доставлено на сервер, код возврата ", server_msg["response"], server_msg["alert"])
     except json.decoder.JSONDecodeError:
-        print('Сообщение не распозноно, {}'.format(data))
+        logger.error('Сообщение не распозноно, {}'.format(data))
 
 
 def main():
@@ -63,7 +65,7 @@ def main():
     try:
         client_socket.connect((cmd_args().addr, cmd_args().port))
     except ConnectionRefusedError:
-        print('Сервер {} недоступен по порту {}'.format(cmd_args().addr, cmd_args().port))
+        logger.error('Сервер {} недоступен по порту {}'.format(cmd_args().addr, cmd_args().port))
 
     send_message(msg, client_socket)
     get_msg(client_socket)
@@ -72,4 +74,5 @@ def main():
 
 
 if __name__ == '__main__':
+    logger = logging.getLogger('client')
     main()
