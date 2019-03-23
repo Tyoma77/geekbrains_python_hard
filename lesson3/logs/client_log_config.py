@@ -21,8 +21,8 @@ formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(module)-8s - %(
 
 
 fh = logging.FileHandler(path, encoding='utf-8')
-fh.setLevel(logging.DEBUG)
+fh.setLevel(logging.INFO)
 fh.setFormatter(formatter)
 
 logger.addHandler(fh)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)

@@ -34,7 +34,7 @@ def get_msg(client):  # принимает сообщение клиента;
 
 def resp_from_server(client_msg, client):  # формирует ответ клиенту;
     json_resp = {}
-    if client_msg["action"] == 'presence':
+    if client_msg["action"] == "presence":
         json_resp = {
             "response": 100,
             "time": time.time(),
@@ -56,12 +56,11 @@ def main():
     s = socket(AF_INET, SOCK_STREAM)
     try:
         s.bind(('', args.port))
+        s.listen(5)
+        while True:
+            send_msg(s)
     except OSError as e:
         logger.error(e)
-        s.bind(('', 8888))
-    s.listen(5)
-    while True:
-        send_msg(s)
 
 
 if __name__ == '__main__':

@@ -17,6 +17,17 @@ import argparse
 import json
 import logs.client_log_config
 import logging
+import inspect
+
+
+def log(function):
+
+    def call_function(*args, **kwargs):
+        logger.info("функция {} была вызвана из {}".format(function.__name__, inspect.stack()[1][3]))
+        r = function(*args, **kwargs)
+        return r
+
+    return call_function
 
 
 def cmd_args():  # обработка сообщений командной строки
@@ -29,25 +40,27 @@ def cmd_args():  # обработка сообщений командной ст
 
 def presence_msg(username, status):  # сформировать presence-сообщение;
     return {
-        'action': 'presence',
-        'time': time.time(),
-        'user': {
-            'username': username,
-            'status': status,
+        "action": "presence",
+        "time": time.time(),
+        "user": {
+            "username": username,
+            "status": status,
         }
     }
 
 
+@log
 def send_message(msg, s):  # отправить сообщение серверу;
     logger.info("Sending message %s" % msg)
     s.send(msg.encode('utf-8'))
 
 
+@log
 def get_msg(soc):  # получить ответ сервера;
     msg = soc.recv(1000000)
     parse_message(msg)
 
-
+@log
 def parse_message(data):  # разобрать сообщение сервера;
     try:
         server_msg = json.loads(data.decode('utf-8'))

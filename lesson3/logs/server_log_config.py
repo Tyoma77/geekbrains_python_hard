@@ -14,15 +14,15 @@ import logging
 import os
 
 
-path = os.path.join('logs', 'log_server.log')
+path = os.path.join('logs', 'log_client.log')
 
 logger = logging.getLogger('server')
 formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(module)-8s - %(message)s ")
 
 
 fh = logging.FileHandler(path, encoding='utf-8')
-fh.setLevel(logging.INFO)
+fh.setLevel(logging.DEBUG)
 fh.setFormatter(formatter)
 
 logger.addHandler(fh)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
