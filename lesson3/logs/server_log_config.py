@@ -14,7 +14,7 @@ import logging
 import os
 
 
-path = os.path.join('logs', 'log_client.log')
+path = os.path.join('logs', 'log_server.log')
 
 logger = logging.getLogger('server')
 formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(module)-8s - %(message)s ")

@@ -1,20 +1,4 @@
-2019-03-19 21:30:51,160 - INFO     - client   - Sending message {"action": "presence", "time": 1553020251.1563191, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-22 14:40:44,096 - INFO     - client   - Sending message {"action": "presence", "time": 1553254844.0913827, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-22 14:41:10,028 - INFO     - client   - Sending message {"action": "presence", "time": 1553254870.0247653, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-22 14:41:51,633 - INFO     - client   - Sending message {"action": "presence", "time": 1553254911.629881, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-22 14:44:03,839 - INFO     - client   - Sending message {"action": "presence", "time": 1553255043.836157, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-22 15:00:51,263 - ERROR    - client   - Сервер localhost недоступен по порту 7777 
-2019-03-22 15:06:31,354 - ERROR    - client   - Сервер localhost недоступен по порту 8888 
-2019-03-22 15:07:11,530 - ERROR    - client   - Сервер localhost недоступен по порту 8888 
-2019-03-22 16:55:41,407 - ERROR    - client   - Сервер localhost недоступен по порту 8888 
-2019-03-22 16:56:44,622 - ERROR    - client   - Сервер localhost недоступен по порту 8888 
-2019-03-22 16:57:24,413 - ERROR    - client   - Сервер localhost недоступен по порту 8888 
-2019-03-23 20:39:53,468 - DEBUG    - server   - Server started 
-2019-03-23 20:39:59,565 - INFO     - client   - Sending message {"action": "presence", "time": 1553362799.5610473, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-24 00:18:48,715 - DEBUG    - server   - Server started 
-2019-03-24 00:19:01,173 - INFO     - client   - Sending message {"action": "presence", "time": 1553375941.1630087, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-24 00:19:51,089 - INFO     - client   - Sending message {"action": "presence", "time": 1553375991.0857472, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-24 00:21:07,011 - INFO     - client   - функция send_message была вызвана из main 
-2019-03-24 00:21:07,011 - INFO     - client   - Sending message {"action": "presence", "time": 1553376067.0028248, "user": {"username": "Artem", "status": "I'm home"}} 
-2019-03-24 00:21:07,012 - INFO     - client   - функция get_msg была вызвана из main 
-2019-03-24 00:21:07,013 - INFO     - client   - функция parse_message была вызвана из get_msg 
+2019-03-24 00:29:17,378 - INFO     - client   - функция send_message была вызвана из main 
+2019-03-24 00:29:17,378 - INFO     - client   - Sending message {"action": "presence", "time": 1553376557.368373, "user": {"username": "Artem", "status": "I'm home"}} 
+2019-03-24 00:29:17,379 - INFO     - client   - функция get_msg была вызвана из main 
+2019-03-24 00:29:17,380 - INFO     - client   - функция parse_message была вызвана из get_msg 

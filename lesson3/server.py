@@ -1,16 +1,19 @@
-# принимает сообщение клиента;
-# формирует ответ клиенту;
-# отправляет ответ клиенту;
-# имеет параметры командной строки:
-# -p <port> — TCP-порт для работы (по умолчанию использует 7777);
-# -a <addr> — IP-адрес для прослушивания (по умолчанию слушает все доступные адреса).
-
 from socket import *
 import time
 import argparse
 import json
 import logs.server_log_config
 import logging
+import inspect
+
+
+def log(function):
+    def call_function(*args, **kwargs):
+        logger.info("функция {} была вызвана из {}".format(function.__name__, inspect.stack()[1][3]))
+        r = function(*args, **kwargs)
+        return r
+
+    return call_function
 
 
 def cmd_args():  # обработка сообщений командной строки
@@ -21,6 +24,7 @@ def cmd_args():  # обработка сообщений командной ст
     return parser.parse_args()
 
 
+@log
 def get_msg(client):  # принимает сообщение клиента;
     data = client.recv(1024)
     json_msg = {}
@@ -32,6 +36,7 @@ def get_msg(client):  # принимает сообщение клиента;
     return json_msg
 
 
+@log
 def resp_from_server(client_msg, client):  # формирует ответ клиенту;
     json_resp = {}
     if client_msg["action"] == "presence":
@@ -45,6 +50,7 @@ def resp_from_server(client_msg, client):  # формирует ответ кл�
     client.close()
 
 
+@log
 def send_msg(s: socket):  # отправляет ответ клиенту;
     client, adr = s.accept()
     msg_from_client = get_msg(client)
